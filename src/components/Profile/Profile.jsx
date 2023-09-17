@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Profile.css";
 import Header from "../Header/Header";
 
@@ -48,7 +49,7 @@ function Profile() {
             onClick={handleLogOut}
             type="button"
           >
-            Выйти из аккаунта
+            <NavLink to="/">Выйти из аккаунта</NavLink>
           </button>
         </>
       );
@@ -67,10 +68,10 @@ function Profile() {
   };
 
   return (
-    <section className="profile">
+    <main className="profile">
       <Header isLogged={true} />
-      <main className="profile__wrap">
-        <h2 className="profile__title">{`Привет, ${currentUser.name}!`}</h2>
+      <section className="profile__wrap">
+        <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
         <form className="profile__form" onSubmit={handleProfileSubmit}>
           <div className="profile__form-item">
             <label className="profile__label">Имя</label>
@@ -100,8 +101,8 @@ function Profile() {
           </div>
         </form>
         {buttonsMarkup()}
-      </main>
-    </section>
+      </section>
+    </main>
   );
 }
 

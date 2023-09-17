@@ -2,8 +2,8 @@ import "./NavInfo.css";
 
 function NavInfo() {
   return (
-    <div className="nav-info">
-      <div className="nav-info__container">
+    <nav className="nav-info">
+      <ul className="nav-info__container">
         <a className="nav-info__nav" href="#aboutProjectId">
           О проекте
         </a>
@@ -13,8 +13,8 @@ function NavInfo() {
         <a className="nav-info__nav" href="#aboutMeId">
           Студент
         </a>
-      </div>
-    </div>
+      </ul>
+    </nav>
   );
 }
 

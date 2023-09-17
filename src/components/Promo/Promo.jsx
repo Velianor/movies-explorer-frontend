@@ -1,15 +1,11 @@
 import "./Promo.css";
-import projectLogo from "../../images/logo-promo.svg";
 
 function Promo() {
   return (
     <section className="promo">
-      <div className="promo__container">
-        <h1 className="promo__title">
-          Учебный проект студента факультета Веб-разработки.
-        </h1>
-        <img className="promo__img" src={projectLogo} alt="Промо картинка" />
-      </div>
+      <h1 className="promo__header">
+        Учебный проект студента факультета Веб-разработки.
+      </h1>
     </section>
   );
 }

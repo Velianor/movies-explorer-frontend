@@ -70,20 +70,21 @@
 @media screen and (max-width: 480px) {
     .stack {
         padding: 70px 18px;
-        background-color: #F5F5F5;
+        width: calc(100% - 36px);
     }
 
     .stack__title {
         margin-bottom: 24px;
         font-size: 30px;
         line-height: 36px;
+        letter-spacing: -1.2px;
     }
 
     .stack__subtitle {
         max-width: 292px;
         margin-bottom: 50px;
         font-size: 11px;
-        line-height: 16px;
+        line-height: 15px;
     }
 
     .stack__list {

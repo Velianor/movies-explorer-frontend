@@ -33,6 +33,9 @@ function AuthForm({ type, text }) {
             value={inputValue.name}
             onChange={handleChange}
             required
+            placeholder='Иван'
+            minLength={2}
+            maxLength={30}
           />
           <span className="auth__error">{errorMessage.name}</span>
         </div>
@@ -41,11 +44,14 @@ function AuthForm({ type, text }) {
   };
 
   return (
-    <main className="auth">
+    <main className="auth__main">
+      <section className="auth">
       <Link to="/">
         <img className="auth__logo" src={logo} alt="Логотип" />
       </Link>
       <h1 className="auth__title">{text.title}</h1>
+      <form className='auth__form'>
+        <div className = 'auth__container'>
       {signupFormMarkup()}
       <div className="auth__form-item">
         <label className="auth__label">E-mail</label>
@@ -56,6 +62,7 @@ function AuthForm({ type, text }) {
           value={inputValue.email}
           onChange={handleChange}
           required
+          placeholder='ivan@pochta.com'
         />
         <span className="auth__error">{errorMessage.email}</span>
       </div>
@@ -68,8 +75,12 @@ function AuthForm({ type, text }) {
           value={inputValue.password}
           onChange={handleChange}
           required
+          placeholder='qwerty12345'
+          minLength={8}
+          maxLength={30}
         />
         <span className="auth__error">{errorMessage.password}</span>
+      </div>
       </div>
       <div className="auth__buttons">
         <button className="auth__btn" type="submit">
@@ -88,6 +99,8 @@ function AuthForm({ type, text }) {
           )}
         </p>
       </div>
+      </form>
+      </section>
     </main>
   );
 }

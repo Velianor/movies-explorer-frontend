@@ -27,10 +27,12 @@ function MoviesCard({ movie, isSavedMoviesPage }) {
     <li className="movieCard">
       <img className="movieCard__image" src={image} alt={nameRU} />
       <div className="movieCard__desc">
+        <div className="movieCard__container">
         <h3 className="movieCard__title">{nameRU}</h3>
-        <button className={`movieCard__btn ${buttonClass()}`} />
+        <p className="movieCard__duration">{formatedDuration}</p>
+        </div>
+      <button className={`movieCard__btn ${buttonClass()}`} />
       </div>
-      <p className="movieCard__duration">{formatedDuration}</p>
     </li>
   );
 }

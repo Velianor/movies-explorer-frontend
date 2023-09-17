@@ -87,6 +87,7 @@
     background-image: url('../../images/burger_menu.svg');
     border: none;
     display: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
