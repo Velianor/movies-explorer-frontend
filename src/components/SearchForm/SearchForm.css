@@ -200,6 +200,17 @@ input:checked+.search__checkbox-slider:before {
 }
 
 @media screen and (max-width: 480px) {
+    .search__form{
+        width: 262px;
+    } 
+
+    
+    .search__input {
+        margin: 0;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
     .search__icon {
         display: none;
     }

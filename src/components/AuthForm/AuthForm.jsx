@@ -33,8 +33,7 @@ function AuthForm({ type, text }) {
             value={inputValue.name}
             onChange={handleChange}
             required
-            placeholder='Иван'
-            minLength={2}
+            placeholder="Введите имя"
             maxLength={30}
           />
           <span className="auth__error">{errorMessage.name}</span>
@@ -62,7 +61,7 @@ function AuthForm({ type, text }) {
           value={inputValue.email}
           onChange={handleChange}
           required
-          placeholder='ivan@pochta.com'
+          placeholder='Введите почту'
         />
         <span className="auth__error">{errorMessage.email}</span>
       </div>
@@ -75,7 +74,7 @@ function AuthForm({ type, text }) {
           value={inputValue.password}
           onChange={handleChange}
           required
-          placeholder='qwerty12345'
+          placeholder='Введите пароль'
           minLength={8}
           maxLength={30}
         />
