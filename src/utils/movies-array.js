@@ -102,7 +102,7 @@ const movies = [
     saved: false,
     id: 14,
   },
-   {
+  {
     image: film3,
     duration: 456,
     nameRU: "Война",

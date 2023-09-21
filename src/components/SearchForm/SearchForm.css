@@ -201,7 +201,7 @@ input:checked+.search__checkbox-slider:before {
 
 @media screen and (max-width: 480px) {
     .search__form{
-        width: 262px;
+        
     } 
 
     

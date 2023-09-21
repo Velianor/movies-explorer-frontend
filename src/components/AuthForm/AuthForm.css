@@ -1,4 +1,4 @@
-.auth__main {
+.auth {
     width: 100%;
     display: flex;
     padding: 70px 0;
@@ -6,7 +6,7 @@
     min-height: calc(100vh - 140px);
 }
 
-.auth {
+.auth__section {
     width: 396px;
     display: flex;
     flex-direction: column;
@@ -136,12 +136,12 @@
 }
 
 @media (max-width: 480px) {
-    .auth__main {
+    .auth {
         min-height: calc(100vh - 86px);
         padding: 56px 0 30px;
     }
 
-    .auth {
+    .auth__section {
         width: 260px;
     }
 

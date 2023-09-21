@@ -49,7 +49,7 @@ function Profile() {
             onClick={handleLogOut}
             type="button"
           >
-            <NavLink to="/" className="profile__link_logout">Выйти из аккаунта</NavLink>
+            <NavLink to="/" className="profile__link profile__link_logout">Выйти из аккаунта</NavLink>
           </button>
         </>
       );

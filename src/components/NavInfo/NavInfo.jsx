@@ -4,13 +4,13 @@ function NavInfo() {
   return (
     <nav className="nav-info">
       <ul className="nav-info__container">
-        <a className="nav-info__nav" href="#aboutProjectId">
+        <a className="nav-info__link " href="#aboutProjectId">
           О проекте
         </a>
-        <a className="nav-info__nav" href="#stackId">
+        <a className="nav-info__link" href="#stackId">
           Технологии
         </a>
-        <a className="nav-info__nav" href="#aboutMeId">
+        <a className="nav-info__link" href="#aboutMeId">
           Студент
         </a>
       </ul>
