@@ -1,0 +1,121 @@
+.navLanding  {
+    display: flex;
+    gap: 30px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+}
+
+.navLanding__link-reg {
+    text-decoration: none;
+    color: #000;
+}
+
+
+.navLanding__link-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 32px;
+    font-weight: 500;
+    border-radius: 3px;
+    background-color: #3456F3;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.navMovies {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 44px;
+}
+
+.navMovies__links {
+    display: flex;
+    gap: 16px;
+}
+
+.navMovies__link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.navMovies__link_active {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-decoration: none;
+    color: #000;
+
+}
+
+.navMovies__account-btn {
+    width: 100px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 50px;
+    border: 2px solid rgba(170, 170, 170, .2);
+}
+
+.navMovies__account-btn:hover {
+    cursor: pointer;
+}
+
+.navMovies__burger-btn {
+    width: 40px;
+    height: 43px;
+    padding: 0;
+    background: none;
+    background-image: url('../../images/burger_menu.svg');
+    border: none;
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    .navMovies__links,
+    .navMovies__account-btn,
+    .navMovies__account-btn-wrap {
+        display: none;
+    }
+
+    .navMovies {
+        justify-content: flex-end;
+    }
+
+    .navMovies__burger-btn {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navLanding  {
+        font-size: 10px;
+        line-height: 16px;
+        gap: 14px;
+    }
+
+    .navLanding__link-login {
+        width: 54px;
+        height: 26px;
+    }
+}
