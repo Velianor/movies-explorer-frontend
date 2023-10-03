@@ -1,46 +1,40 @@
 import "./AuthForm.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import useForm from "../../hooks/useForm";
+import { validateName, validateEmail } from "../../utils/validateInput";
 
-function AuthForm({ type, text }) {
-  const [inputValue, setinputValue] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const [errorMessage, seteErorMessage] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+function AuthForm({ type, text, onSubmitForm }) {
+  const { values, errors, isFormValid, handleChange, formRef } = useForm();
 
-  const handleChange = (evt) => {
-    const { value, name, validationMessage } = evt.target;
-    setinputValue({ ...inputValue, [name]: value });
-    seteErorMessage({ ...errorMessage, [name]: validationMessage });
-  };
-
-  const signupFormMarkup = () => {
+  const signupForm = () => {
     if (type === "signup") {
       return (
         <div className="auth__form-item">
           <label className="auth__label">Имя</label>
           <input
-            className={`auth__input ${errorMessage.name ? "error" : ""}`}
+            className={`auth__input ${errors.name ? "error" : ""}`}
             name="name"
-            type="text"
-            value={inputValue.name}
+            type="name"
+            value={values.name || ""}
             onChange={handleChange}
             required
             placeholder="Введите имя"
+            minLength={2}
             maxLength={30}
           />
-          <span className="auth__error">{errorMessage.name}</span>
+          <span className="auth__error">
+            {errors.name || validateName(values.name).message}
+          </span>
         </div>
       );
     }
   };
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onSubmitForm(values);
+  }
 
   return (
     <main className="auth">
@@ -49,42 +43,51 @@ function AuthForm({ type, text }) {
           <img className="auth__logo" src={logo} alt="Логотип" />
         </Link>
         <h1 className="auth__title">{text.title}</h1>
-        <form className="auth__form">
+        {signupForm()}
+        <form
+          className="auth__form"
+          onSubmit={handleSubmit}
+          noValidate
+          ref={formRef}
+        >
           <div className="auth__container">
-            {signupFormMarkup()}
             <div className="auth__form-item">
               <label className="auth__label">E-mail</label>
               <input
-                className={`auth__input ${errorMessage.email ? "error" : ""}`}
+                className={`auth__input  ${errors.email ? "error" : ""}`}
                 name="email"
                 type="email"
-                value={inputValue.email}
+                value={values.email || ""}
                 onChange={handleChange}
                 required
                 placeholder="Введите почту"
               />
-              <span className="auth__error">{errorMessage.email}</span>
+              <span className="auth__error">
+                {errors.email || validateEmail(values.email).message}
+              </span>
             </div>
             <div className="auth__form-item">
               <label className="auth__label">Пароль</label>
               <input
-                className={`auth__input ${
-                  errorMessage.password ? "error" : ""
-                }`}
+                className={`auth__input ${errors.password ? "error" : ""}`}
                 name="password"
                 type="password"
-                value={inputValue.password}
+                value={values.password || ""}
                 onChange={handleChange}
                 required
                 placeholder="Введите пароль"
                 minLength={8}
                 maxLength={30}
               />
-              <span className="auth__error">{errorMessage.password}</span>
+              <span className="auth__error">{errors.password}</span>
             </div>
           </div>
           <div className="auth__buttons">
-            <button className="auth__btn" type="submit">
+            <button
+              className="auth__btn"
+              type="submit"
+              disabled={!isFormValid || validateEmail(values.email).invalid}
+            >
               {text.buttonText}
             </button>
             <p className="auth__question">

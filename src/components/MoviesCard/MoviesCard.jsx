@@ -1,40 +1,55 @@
 import "./MoviesCard.css";
+import { formatMovieDuration } from '../../utils/constans';
 
-function MoviesCard({ movie, isSavedMoviesPage }) {
-  function formatMovieDuration(duration) {
-    if (duration >= 60) {
-      const minutes = duration % 60;
-      return `${Math.floor(duration / 60)}ч ${
-        minutes > 0 ? minutes + "м" : ""
-      }`;
-    }
-    return `${duration}м`;
-  }
+function MoviesCard({ movie, isSavedMoviesPage, onDelete, onSave, isSaved, link }) {
+  const { nameRU, duration, trailerLink } = movie;
 
-  const { nameRU, image, duration, saved } = movie;
-  const formatedDuration = formatMovieDuration(duration);
+  function handleDeleteMovie() {
+    onDelete(movie);
+  };
 
-  const buttonClass = () => {
-    if (saved && !isSavedMoviesPage) {
-      return "movieCard__btn_saved";
+  function handleSaveMovie() {
+    onSave(movie);
+  };
+
+  const getButtonMarkup = () => {
+    if (isSaved && !isSavedMoviesPage) {
+      return (
+        <button
+        className='movieCard__btn movieCard__btn_saved'
+        onClick={handleDeleteMovie}
+        />
+      );
     } else if (isSavedMoviesPage) {
-      return "movieCard__btn_remove";
+      return (
+        <button
+        className='movieCard__btn movieCard__btn_remove'
+        onClick={handleDeleteMovie}
+        />
+      );
     }
-    return "movieCard__btn_save";
+    return (
+      <button
+      className='movieCard__btn movieCard__btn_save'
+      onClick={handleSaveMovie}
+      />
+    );
   };
 
   return (
     <li className="movieCard">
-      <img className="movieCard__image" src={image} alt={nameRU} />
+      <a href={trailerLink} target='_blanck'>
+      <img className="movieCard__image" src={link} alt={nameRU} />
+      </a>
       <div className="movieCard__desc">
         <div className="movieCard__container">
         <h3 className="movieCard__title">{nameRU}</h3>
-        <p className="movieCard__duration">{formatedDuration}</p>
+        <p className="movieCard__duration">{formatMovieDuration(duration)}</p>
         </div>
-      <button className={`movieCard__btn ${buttonClass()}`} />
+        {getButtonMarkup()}
       </div>
     </li>
   );
-}
+};
 
 export default MoviesCard;

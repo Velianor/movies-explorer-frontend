@@ -126,6 +126,7 @@
 
 
 .auth__link {
+    padding-left: 6px;
     text-decoration: none;
     color: #3456F3;
     transition: 0.3s ease-in-out;

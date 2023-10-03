@@ -1,9 +1,9 @@
 import "./SeeMore.css";
 
-function SeeMore({ seeMore }) {
+function SeeMore({ onClick }) {
   return (
-    <div className={!seeMore ? "see-more see-more_hide" : "see-more"}>
-      <button className="see-more__btn" type="button">
+    <div className="see-more">
+      <button className="see-more__btn" type="button" onClick={onClick}>
         Ещё
       </button>
     </div>
