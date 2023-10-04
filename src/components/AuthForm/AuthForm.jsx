@@ -3,9 +3,11 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import { validateName, validateEmail } from "../../utils/validateInput";
+import { useState } from "react";
 
 function AuthForm({ type, text, onSubmitForm }) {
   const { values, errors, isFormValid, handleChange, formRef } = useForm();
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const signupForm = () => {
     if (type === "signup") {
@@ -30,10 +32,22 @@ function AuthForm({ type, text, onSubmitForm }) {
       );
     }
   };
-
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    onSubmitForm(values);
+
+    if (!isSubmitting) {
+      setSubmitting(true);
+
+      try {
+        // Вызываем onSubmitForm и передаем ему функцию, которая будет вызвана после выполнения запроса
+        await onSubmitForm(values);
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        // Обработка ошибок, например, вывод ошибки или обновление состояния ошибки
+      } finally {
+        setSubmitting(false); // Вне зависимости от успешности запроса сбрасываем флаг isSubmitting
+      }
+    }
   }
 
   return (
@@ -86,7 +100,7 @@ function AuthForm({ type, text, onSubmitForm }) {
             <button
               className="auth__btn"
               type="submit"
-              disabled={!isFormValid || validateEmail(values.email).invalid}
+              disabled={!isFormValid || validateEmail(values.email).invalid || isSubmitting}
             >
               {text.buttonText}
             </button>

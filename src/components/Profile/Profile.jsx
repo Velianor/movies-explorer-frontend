@@ -44,9 +44,23 @@ function Profile({ onProfileUpdate, onSignOut, isLoading }) {
     setShowSaveButton(true);
   };
 
+  // function handleSubmit(evt) {
+  //   evt.preventDefault();
+  //   onProfileUpdate(values);
+  //   if (
+  //     errors &&
+  //     validateName(values.name).invalid &&
+  //     validateEmail(values.email).invalid
+  //   ) {
+  //     setShowSaveButton(true);
+  //   } else {
+  //     setShowSaveButton(false);
+  //   }
+  // }
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    onProfileUpdate(values);
+
     if (
       errors &&
       validateName(values.name).invalid &&
@@ -54,6 +68,13 @@ function Profile({ onProfileUpdate, onSignOut, isLoading }) {
     ) {
       setShowSaveButton(true);
     } else {
+      setShowSaveButton(false);
+    }
+  }
+
+  function handleSaveButtonClick() {
+    if (isFormValid) {
+      onProfileUpdate(values);
       setShowSaveButton(false);
     }
   }
@@ -117,6 +138,7 @@ function Profile({ onProfileUpdate, onSignOut, isLoading }) {
                   (errors.email && "error")
                 }
                 type="submit"
+                onClick={handleSaveButtonClick}
               >
                 Сохранить
               </button>
