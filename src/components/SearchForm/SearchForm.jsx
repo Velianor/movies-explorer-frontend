@@ -60,6 +60,27 @@ function SearchForm({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredMovies, setFilteredMovies, location]);
 
+  useEffect(() => {
+    if (location.pathname === "/movies" && isMoviesSearched) {
+      localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
+      localStorage.setItem("isChecked", isChecked);
+    }
+  }, [filteredMovies, isChecked, isMoviesSearched, location]);
+
+  useEffect(() => {
+    if (location.pathname === "/movies") {
+      const filteredMoviesFromLS = JSON.parse(localStorage.getItem("filteredMovies")) || [];
+      const isCheckedFromLS = localStorage.getItem("isChecked") === "true";
+  
+      if (filteredMoviesFromLS.length > 0) {
+        setFilteredMovies(filteredMoviesFromLS);
+        setIsChecked(isCheckedFromLS);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+  
+
 
   function showSavedMovieSearch() {
     if (setIsSavedMoviesSearched) {

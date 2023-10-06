@@ -45,8 +45,10 @@ function AuthForm({ type, text, onSubmitForm }) {
         console.error("Error submitting form:", error);
         // Обработка ошибок, например, вывод ошибки или обновление состояния ошибки
       } finally {
-        setSubmitting(false); // Вне зависимости от успешности запроса сбрасываем флаг isSubmitting
-      }
+        setTimeout(() => {
+            setSubmitting(false);
+        }, 3000);
+    }
     }
   }
 
@@ -63,6 +65,7 @@ function AuthForm({ type, text, onSubmitForm }) {
           onSubmit={handleSubmit}
           noValidate
           ref={formRef}
+          disabled={isSubmitting}
         >
           <div className="auth__container">
             <div className="auth__form-item">
@@ -102,7 +105,7 @@ function AuthForm({ type, text, onSubmitForm }) {
               type="submit"
               disabled={!isFormValid || validateEmail(values.email).invalid || isSubmitting}
             >
-              {text.buttonText}
+              {isSubmitting ? 'Отправка...' : text.buttonText}
             </button>
             <p className="auth__question">
               {text.questText}
