@@ -106,14 +106,30 @@
     color: #ee3465;
 }
 
-.profile__button-save_disabled {
+.profile__button-save:disabled {
     opacity: 0.5;
     cursor: default;
 }
 
-.profile__button-save_disabled:hover {
+.profile__button-save:disabled:hover {
     opacity: 0.5;
 }
+
+.error {
+    color: #ee3465;
+}
+
+.profile__error {
+    box-sizing: border-box;
+    min-height: 24px;
+    padding: 6px 0 5px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ee3465;
+    margin-top: 6px;
+}
+
 
 @media screen and (max-width: 768px) {
     .profile__wrap {

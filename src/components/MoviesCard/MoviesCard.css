@@ -13,6 +13,7 @@
     object-fit: cover;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
+    height: 151px;
 }
 
 .movieCard__desc {
@@ -46,8 +47,6 @@
     padding: 0;
     margin-top: -6px;
     border: none;
-    cursor: pointer;
-    background-color: transparent;
     transition: opacity 0.25s;
 }
 
